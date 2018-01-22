@@ -26,28 +26,16 @@ class MorgenVertretungsViewController: UIViewController, WKUIDelegate, WKNavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         vplan.uiDelegate = self
-        Timer.scheduledTimer(timeInterval: 180, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        todayHtml = getToday()
-        vplan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://www.helmholtzschule-ffm.de/Schulleitung/StdPlan/Klassen/subst_001.htm")  )
-        
-        /*
-         guard let vTodayurl3 = try URL(string: "http://gymbase.net/MatheApp/heuteS3.php?auth=sdffsduijvxchpqwkcyl") else {
-         print("vurl not valid - contact helmholtz admin")
-         return
-         }
-         guard let vTodayurl4 = try URL(string: "http://gymbase.net/MatheApp/heuteS4.php?auth=sdffsduijvxchpqwkcyl") else {
-         print("vurl not valid - contact helmholtz admin")
-         return
-         }
-         */
-        
+        Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        todayHtml = getToday()
-        vplan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl")  )
+        tomorrowHtml = getToday()
+        tomorrowHtml = tomorrowHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
+        vplan.loadHTMLString(tomorrowHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl")  )
     }
     
     

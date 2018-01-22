@@ -24,27 +24,18 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         vPlan.uiDelegate = self
-        Timer.scheduledTimer(timeInterval: 12, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        todayHtml = getToday()
+        Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        /*todayHtml = getToday() //.replacingOccurrences(of: "meta http-equiv=\"refresh\" content=\"120; URL=subst_001.htm\">", with: "")
+        todayHtml = todayHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
+        print(todayHtml)
         vPlan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://www.helmholtzschule-ffm.de/Schulleitung/StdPlan/Klassen/subst_001.htm")  )
-        vPlan.stopLoading()
-        /*
-        guard let vTodayurl3 = try URL(string: "http://gymbase.net/MatheApp/heuteS3.php?auth=sdffsduijvxchpqwkcyl") else {
-            print("vurl not valid - contact helmholtz admin")
-            return
-        }
-        guard let vTodayurl4 = try URL(string: "http://gymbase.net/MatheApp/heuteS4.php?auth=sdffsduijvxchpqwkcyl") else {
-            print("vurl not valid - contact helmholtz admin")
-            return
-        }
         */
-   
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         todayHtml = getToday()
+        todayHtml = todayHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
         vPlan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl")  )
     }
     

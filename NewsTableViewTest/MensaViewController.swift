@@ -8,27 +8,43 @@
 
 import UIKit
 import WebKit
+import Fuzi
 
 class MensaViewController: UIViewController {
     
-
- 
     @IBOutlet weak var webView: WKWebView!
     
     weak var observe : NSObjectProtocol?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
- 
-
-        guard let url = URL(string: "https://www.liebigmensaservice.de/speiseplan/sppl-asbhelmholtz-32018.pdf") else
-        {
-            print("Initialisation of URL failed")
-            return
+       super.viewDidLoad()
+        do {
+            
+            let mensaUrl = URL(string: "https://www.liebigmensaservice.de/active/formulare/speiseplan.php?mandant=asbhelmholtz")
+            let htmlString = try String(contentsOf: mensaUrl! , encoding: String.Encoding.ascii)
+           
+            //let doc = try HTMLDocument(string:  htmlString, encoding: String.Encoding.utf8)
+            print("HtmlDoc")
+            let rangeOfPdf = htmlString.range(of: "sppl-asbhelmholtz")!
+            //print(htmlString.index((rangeOfPdf.upperBound), offsetBy: 10))
+            print(htmlString[rangeOfPdf.upperBound...htmlString.index((rangeOfPdf.upperBound), offsetBy: 9)])
+            let pdfIndex = htmlString[rangeOfPdf.upperBound...htmlString.index((rangeOfPdf.upperBound), offsetBy: 9)]
+            let urlString = "https://www.liebigmensaservice.de/speiseplan/sppl-asbhelmholtz" + pdfIndex
+            print(urlString)
+            guard let url = URL(string:  urlString ) else
+            {
+                print("Initialisation of URL failed")
+                return
+            }
+            let request = URLRequest(url : url)
+            webView.load(request)
         }
-        let request = URLRequest(url : url)
-        webView.load(request)
-   
+        catch let error {
+            //Error opening URL
+            print("Error: \(error)!")
+            return
+            //return "Error: \(error)!"
+        }
 
        
         // Do any additional setup after loading the view.

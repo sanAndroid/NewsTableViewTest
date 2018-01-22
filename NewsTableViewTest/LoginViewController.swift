@@ -11,9 +11,14 @@ import UIKit
 class LoginViewController: UIViewController {
 
 
+    @IBOutlet weak var passwordeingeben: UILabel!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var okButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordeingeben.alpha = 0.0
+        okButton.alpha = 0.0
+        password.alpha = 0.0
  
     }
     
@@ -25,6 +30,10 @@ class LoginViewController: UIViewController {
                 print("Show is called: ")
                 performSegue(withIdentifier: "loadTabBar", sender:self)
             }
+        }else{
+            password.alpha = 1.0
+            passwordeingeben.alpha = 1.0
+            okButton.alpha = 1.0
         }
     }
 

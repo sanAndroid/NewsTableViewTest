@@ -109,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				E6535CBC200A4C6D0068FA84 /* CalenderViewController.swift */,
+				E6C8FF90200F9F8E00138111 /* MensaViewController.swift */,
 				E6535CBE200A57A50068FA84 /* HeuteVertretungsViewController.swift */,
 				E6C8FF8E200F3B7F00138111 /* MorgenVertretungsViewController.swift */,
 				E62806DC2010DB86003754B6 /* DisplayNewsViewController.swift */,
@@ -121,7 +122,6 @@
 				E6535C9D2007A6250068FA84 /* Assets.xcassets */,
 				E6535C9F2007A6250068FA84 /* LaunchScreen.storyboard */,
 				E6535CA22007A6250068FA84 /* Info.plist */,
-				E6C8FF90200F9F8E00138111 /* MensaViewController.swift */,
 			);
 			path = NewsTableViewTest;
 			sourceTree = "<group>";
