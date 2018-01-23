@@ -17,9 +17,7 @@ class MorgenVertretungsViewController: UIViewController, WKUIDelegate, WKNavigat
 
     let html = "<html>...</html>"
     var url : String = ""
-    var todayHtml : String = ""
     var tomorrowHtml : String = ""
-    var today : Bool = true
     @IBOutlet weak var vplan: WKWebView!
     
     
@@ -27,15 +25,14 @@ class MorgenVertretungsViewController: UIViewController, WKUIDelegate, WKNavigat
         super.viewDidLoad()
         vplan.uiDelegate = self
         Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         tomorrowHtml = getToday()
-        tomorrowHtml = tomorrowHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
-        vplan.loadHTMLString(tomorrowHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl")  )
+        tomorrowHtml = tomorrowHtml.replacingOccurrences(of: "content=\"10;", with: "content=\"120;")
+        print(tomorrowHtml)
+        vplan.loadHTMLString(tomorrowHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/morgenS1.php?auth=sdffsduijvxchpqwkcylft")  )
     }
     
     
@@ -45,8 +42,9 @@ class MorgenVertretungsViewController: UIViewController, WKUIDelegate, WKNavigat
     }
     
     @objc func update() {
-        vplan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl")  )
+        vplan.loadHTMLString(tomorrowHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/morgenS1.php?auth=sdffsduijvxchpqwkcyl")  )
     }
+    
     func getToday() -> String {
         var htmlString : String
         var today : String = ""

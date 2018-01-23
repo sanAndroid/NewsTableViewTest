@@ -25,11 +25,6 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
         super.viewDidLoad()
         vPlan.uiDelegate = self
         Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        /*todayHtml = getToday() //.replacingOccurrences(of: "meta http-equiv=\"refresh\" content=\"120; URL=subst_001.htm\">", with: "")
-        todayHtml = todayHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
-        print(todayHtml)
-        vPlan.loadHTMLString(todayHtml , baseURL:  URL(string: "http://www.helmholtzschule-ffm.de/Schulleitung/StdPlan/Klassen/subst_001.htm")  )
-        */
     }
     
     override func viewWillAppear(_ animated: Bool) {
