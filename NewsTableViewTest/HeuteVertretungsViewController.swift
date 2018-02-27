@@ -24,7 +24,7 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         vPlan.uiDelegate = self
-        Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

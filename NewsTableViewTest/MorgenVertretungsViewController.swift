@@ -24,13 +24,13 @@ class MorgenVertretungsViewController: UIViewController, WKUIDelegate, WKNavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         vplan.uiDelegate = self
-        Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         tomorrowHtml = getToday()
-        tomorrowHtml = tomorrowHtml.replacingOccurrences(of: "content=\"10;", with: "content=\"120;")
+        tomorrowHtml = tomorrowHtml.replacingOccurrences(of: "content=\"12;", with: "content=\"120;")
         print(tomorrowHtml)
         vplan.loadHTMLString(tomorrowHtml , baseURL:  URL(string: "http://gymbase.net/MatheApp/morgenS1.php?auth=sdffsduijvxchpqwkcylft")  )
     }
