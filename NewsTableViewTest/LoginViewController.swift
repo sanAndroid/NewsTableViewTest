@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordeingeben: UILabel!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var okButton: UIButton!
+    public static var teacher: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordeingeben.alpha = 0.0
@@ -26,7 +28,7 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(false)
         if let pwd =  UserDefaults.standard.string(forKey: "HelmholtzPWD"){
             print("Key exists: " + pwd)
-            if pwd == "1912"{
+            if pwd == "1912" || pwd == "C1602Z" {
                 print("Show is called: ")
                 performSegue(withIdentifier: "loadTabBar", sender:self)
             }

@@ -28,7 +28,12 @@ class MensaViewController: UIViewController {
             let rangeOfPdf = htmlString.range(of: "sppl-asbhelmholtz")!
             //print(htmlString.index((rangeOfPdf.upperBound), offsetBy: 10))
             print(htmlString[rangeOfPdf.upperBound...htmlString.index((rangeOfPdf.upperBound), offsetBy: 9)])
-            let pdfIndex = htmlString[rangeOfPdf.upperBound...htmlString.index((rangeOfPdf.upperBound), offsetBy: 9)]
+            var pdfIndex : String
+            var index : Int = 7
+            repeat{
+                pdfIndex = String(htmlString[rangeOfPdf.upperBound...htmlString.index((rangeOfPdf.upperBound), offsetBy: index)])
+                index = index + 1
+            } while(!pdfIndex.hasSuffix( "pdf") && index < 30)
             let urlString = "https://www.liebigmensaservice.de/speiseplan/sppl-asbhelmholtz" + pdfIndex
             print(urlString)
             guard let url = URL(string:  urlString ) else

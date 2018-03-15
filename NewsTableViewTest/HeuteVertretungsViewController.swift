@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import Fuzi
+import FontAwesome_swift
 
 class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
@@ -18,11 +19,21 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
     var todayHtml : String = ""
     var tomorrowHtml : String = ""
     var today : Bool = true
-    
+    var teacher : Bool = false
+
     @IBOutlet weak var vPlan: WKWebView!
+    @IBOutlet weak var editPassword: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        editPassword.font = fontAwesome(ofSize: 30)
+        
+        if let pwd =  UserDefaults.standard.string(forKey: "HelmholtzPWD") {
+            if pwd == "C1602Z" {
+                self.teacher = true
+            }
+        }
+        
         vPlan.uiDelegate = self
         Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
     }
@@ -49,12 +60,12 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
         
         // Get the first page and initialize the htmlstring with it
         // Get the current date (today) in order to compare it with the other pages' date
-        guard let vTodayurl1 = URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl") else {
+        guard let Todayurl1 = URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl") else {
             print("vurl not valid - contact helmholtz admin")
             return "Vurl not valid - contact helmholtz admin"
         }
         do{
-            let htmlString1 = try String(contentsOf: vTodayurl1 , encoding: String.Encoding.utf8)
+            let htmlString1 = try String(contentsOf: Todayurl1 , encoding: String.Encoding.utf8)
             htmlString = htmlString1
             let doc = try HTMLDocument(string:  htmlString1, encoding: String.Encoding.utf8)
             print("FirstChild")
@@ -138,11 +149,18 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
             return "Error: \(error)!"
         }
         return htmlString
-        
+    }
+    
+    @IBAction func editPassword(_ sender: Any) {
+        let editPasswordVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController( withIdentifier: "passwordPopUp") as! NewPasswordViewController
+        self.addChildViewController(editPasswordVC)
+        editPasswordVC.view.frame = self.view.frame
+        self.view.addSubview(editPasswordVC.view)
+        editPasswordVC.didMove(toParentViewController: self)
         
     }
     
-
+    
     
     /*
     // MARK: - Navigation
