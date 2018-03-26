@@ -9,7 +9,8 @@
 import UIKit
 import WebKit
 import Fuzi
-import FontAwesome_swift
+
+
 
 class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
@@ -26,7 +27,8 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editPassword.font = fontAwesome(ofSize: 30)
+        
+  
         
         if let pwd =  UserDefaults.standard.string(forKey: "HelmholtzPWD") {
             if pwd == "C1602Z" {
@@ -60,6 +62,7 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
         
         // Get the first page and initialize the htmlstring with it
         // Get the current date (today) in order to compare it with the other pages' date
+ 
         guard let Todayurl1 = URL(string: "http://gymbase.net/MatheApp/heuteS1.php?auth=sdffsduijvxchpqwkcyl") else {
             print("vurl not valid - contact helmholtz admin")
             return "Vurl not valid - contact helmholtz admin"
@@ -150,6 +153,10 @@ class HeuteVertretungsViewController: UIViewController, WKUIDelegate, WKNavigati
         }
         return htmlString
     }
+    private func getAuthURL(number: int){
+        
+    }
+    
     
     @IBAction func editPassword(_ sender: Any) {
         let editPasswordVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController( withIdentifier: "passwordPopUp") as! NewPasswordViewController

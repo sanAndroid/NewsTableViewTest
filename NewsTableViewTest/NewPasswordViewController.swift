@@ -11,10 +11,12 @@ import UIKit
 class NewPasswordViewController: UIViewController {
 
 
+    @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var pwdField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor =  UIColor.black.withAlphaComponent(0.8)
+        self.floatingView.layer.cornerRadius = 10;
         self.showAnimate()
         // Do any additional setup after loading the view.
     }

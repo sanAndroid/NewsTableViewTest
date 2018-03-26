@@ -20,6 +20,9 @@
 		E6535CB9200800730068FA84 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6535CB8200800730068FA84 /* NewsTableViewCell.swift */; };
 		E6535CBD200A4C6D0068FA84 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6535CBC200A4C6D0068FA84 /* CalenderViewController.swift */; };
 		E6535CBF200A57A50068FA84 /* HeuteVertretungsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6535CBE200A57A50068FA84 /* HeuteVertretungsViewController.swift */; };
+		E661220C2051DAC7008954D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E661220B2051DAC7008954D1 /* GoogleService-Info.plist */; };
+		E661220D2051DAC7008954D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E661220B2051DAC7008954D1 /* GoogleService-Info.plist */; };
+		E6B731E72059C7F700337757 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B731E62059C7F700337757 /* NewPasswordViewController.swift */; };
 		E6C8FF8F200F3B7F00138111 /* MorgenVertretungsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8FF8E200F3B7F00138111 /* MorgenVertretungsViewController.swift */; };
 		E6C8FF91200F9F8E00138111 /* MensaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8FF90200F9F8E00138111 /* MensaViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,9 @@
 		E6535CB8200800730068FA84 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E6535CBC200A4C6D0068FA84 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		E6535CBE200A57A50068FA84 /* HeuteVertretungsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuteVertretungsViewController.swift; sourceTree = "<group>"; };
+		E661220A2051D420008954D1 /* NewsTableViewTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NewsTableViewTest.entitlements; sourceTree = "<group>"; };
+		E661220B2051DAC7008954D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E6B731E62059C7F700337757 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		E6C8FF8E200F3B7F00138111 /* MorgenVertretungsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorgenVertretungsViewController.swift; sourceTree = "<group>"; };
 		E6C8FF90200F9F8E00138111 /* MensaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +114,8 @@
 		E6535C952007A6250068FA84 /* NewsTableViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				E661220B2051DAC7008954D1 /* GoogleService-Info.plist */,
+				E661220A2051D420008954D1 /* NewsTableViewTest.entitlements */,
 				E6535CBC200A4C6D0068FA84 /* CalenderViewController.swift */,
 				E6C8FF90200F9F8E00138111 /* MensaViewController.swift */,
 				E6535CBE200A57A50068FA84 /* HeuteVertretungsViewController.swift */,
@@ -118,6 +126,7 @@
 				E6535CB8200800730068FA84 /* NewsTableViewCell.swift */,
 				E6535C962007A6250068FA84 /* AppDelegate.swift */,
 				E6535C9A2007A6250068FA84 /* Main.storyboard */,
+				E6B731E62059C7F700337757 /* NewPasswordViewController.swift */,
 				E62806DE20124C5B003754B6 /* LoginViewController.swift */,
 				E6535C9D2007A6250068FA84 /* Assets.xcassets */,
 				E6535C9F2007A6250068FA84 /* LaunchScreen.storyboard */,
@@ -198,6 +207,11 @@
 					E6535C922007A6250068FA84 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					E6535CA62007A6250068FA84 = {
 						CreatedOnToolsVersion = 9.2;
@@ -231,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6535CA12007A6250068FA84 /* LaunchScreen.storyboard in Resources */,
+				E661220C2051DAC7008954D1 /* GoogleService-Info.plist in Resources */,
 				E6535C9E2007A6250068FA84 /* Assets.xcassets in Resources */,
 				E6535C9C2007A6250068FA84 /* Main.storyboard in Resources */,
 			);
@@ -240,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E661220D2051DAC7008954D1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,10 +303,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewsTableViewTest/Pods-NewsTableViewTest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Fuzi/Fuzi.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fuzi.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -309,6 +331,7 @@
 				E6C8FF8F200F3B7F00138111 /* MorgenVertretungsViewController.swift in Sources */,
 				E6535CB72007A7D50068FA84 /* News.swift in Sources */,
 				E6535CBF200A57A50068FA84 /* HeuteVertretungsViewController.swift in Sources */,
+				E6B731E72059C7F700337757 /* NewPasswordViewController.swift in Sources */,
 				E6535C992007A6250068FA84 /* NewsViewController.swift in Sources */,
 				E6535CB9200800730068FA84 /* NewsTableViewCell.swift in Sources */,
 				E6535C972007A6250068FA84 /* AppDelegate.swift in Sources */,
@@ -467,6 +490,7 @@
 			baseConfigurationReference = 81AABEF306EA2365FC12CAA2 /* Pods-NewsTableViewTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NewsTableViewTest/NewsTableViewTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25W52HY24B;
 				INFOPLIST_FILE = NewsTableViewTest/Info.plist;
@@ -484,6 +508,7 @@
 			baseConfigurationReference = 5B2C5087CC974D080A601C55 /* Pods-NewsTableViewTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NewsTableViewTest/NewsTableViewTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25W52HY24B;
 				INFOPLIST_FILE = NewsTableViewTest/Info.plist;

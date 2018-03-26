@@ -227,6 +227,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Heute" prompt="Vertretungsplan" largeTitleDisplayMode="always" id="gG8-fN-D1B">
                         <barButtonItem key="backBarButtonItem" title="Heute" id="w0c-VC-sbQ"/>
+                        <barButtonItem key="leftBarButtonItem" image="Gear" style="plain" id="3uR-0j-s5H">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="editPassword:" destination="yX6-yv-xMv" id="stR-CE-UAt"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Morgen" id="jwi-qx-8mv">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -235,6 +241,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editPassword" destination="3uR-0j-s5H" id="Q3B-0J-7dw"/>
                         <outlet property="vPlan" destination="XRp-6m-O0v" id="e3a-Bc-a6t"/>
                     </connections>
                 </viewController>
@@ -277,6 +284,69 @@
             </objects>
             <point key="canvasLocation" x="3090" y="272.53521126760563"/>
         </scene>
+        <!--New Password View Controller-->
+        <scene sceneID="vPB-jc-kWv">
+            <objects>
+                <viewController storyboardIdentifier="passwordPopUp" id="tE2-Ud-HSY" customClass="NewPasswordViewController" customModule="NewsTableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="omA-Kd-4UF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unj-lb-wIf">
+                                <rect key="frame" x="60" y="20" width="200" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KET-vu-G04">
+                                        <rect key="frame" x="15" y="37" width="130" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" label="Passwort"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-uV-Ohk">
+                                        <rect key="frame" x="155" y="37" width="30" height="30"/>
+                                        <state key="normal" title="Ok"/>
+                                        <connections>
+                                            <action selector="updatePassword:" destination="tE2-Ud-HSY" eventType="touchUpInside" id="awK-G8-naV"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Neues Passwort eingeben:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pz-Jm-Ym3">
+                                        <rect key="frame" x="15" y="12" width="185" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.63621741529999998" green="0.72649276259999995" blue="0.24807631969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4Pz-Jm-Ym3" firstAttribute="top" secondItem="Unj-lb-wIf" secondAttribute="top" constant="10" id="CWl-RB-yMH"/>
+                                    <constraint firstItem="4Pz-Jm-Ym3" firstAttribute="leading" secondItem="Unj-lb-wIf" secondAttribute="leading" constant="15" id="G5M-mr-aHb"/>
+                                    <constraint firstItem="KET-vu-G04" firstAttribute="leading" secondItem="Unj-lb-wIf" secondAttribute="leading" constant="15" id="Sg0-Ti-LhQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="XYR-OU-Phb"/>
+                                    <constraint firstItem="KET-vu-G04" firstAttribute="centerX" secondItem="4Pz-Jm-Ym3" secondAttribute="centerX" id="acC-6d-9ii"/>
+                                    <constraint firstItem="V0h-uV-Ohk" firstAttribute="leading" secondItem="KET-vu-G04" secondAttribute="trailing" constant="10" id="eBM-96-aVr"/>
+                                    <constraint firstItem="KET-vu-G04" firstAttribute="top" secondItem="4Pz-Jm-Ym3" secondAttribute="bottom" constant="10" id="elc-1P-mdp"/>
+                                    <constraint firstItem="V0h-uV-Ohk" firstAttribute="top" secondItem="4Pz-Jm-Ym3" secondAttribute="bottom" constant="10" id="qso-LA-G1e"/>
+                                    <constraint firstAttribute="trailing" secondItem="V0h-uV-Ohk" secondAttribute="trailing" constant="15" id="wmz-DZ-aw2"/>
+                                    <constraint firstAttribute="height" constant="160" id="xYE-to-mUm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Unj-lb-wIf" firstAttribute="centerX" secondItem="omA-Kd-4UF" secondAttribute="centerX" id="c3m-7L-c5X"/>
+                            <constraint firstItem="Unj-lb-wIf" firstAttribute="top" secondItem="MNj-Oz-KWP" secondAttribute="top" id="m9O-l7-ObH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MNj-Oz-KWP"/>
+                    </view>
+                    <connections>
+                        <outlet property="floatingView" destination="Unj-lb-wIf" id="Mca-6O-tgN"/>
+                        <outlet property="pwdField" destination="KET-vu-G04" id="zWf-f6-lQm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bP5-Yy-1Dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2673.75" y="982.3943661971831"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="8V2-Ik-dgG">
             <objects>
@@ -289,14 +359,14 @@
                                 <rect key="frame" x="60" y="70" width="200" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitte das Schülerpasswort eingeben:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-pT-ckK">
-                                <rect key="frame" x="20" y="178" width="280" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passwort eingeben" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-pT-ckK">
+                                <rect key="frame" x="87.5" y="178" width="145.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.57254901960000004" green="0.68235294120000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMu-fa-C6w">
-                                <rect key="frame" x="145" y="258.5" width="30" height="30"/>
+                                <rect key="frame" x="145" y="259" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.57254901960000004" green="0.68235294120000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title=" Ok ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -363,7 +433,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQ1-dK-iEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-223" y="561"/>
+            <point key="canvasLocation" x="-234" y="561"/>
         </scene>
         <!--Vertretungsplan-->
         <scene sceneID="wFL-pi-XNf">
@@ -417,6 +487,7 @@
     </scenes>
     <resources>
         <image name="CalenderImage" width="15" height="15"/>
+        <image name="Gear" width="15" height="15"/>
         <image name="Helmholtz" width="200" height="33"/>
         <image name="MensaImage" width="15" height="15"/>
         <image name="News" width="15" height="15"/>
